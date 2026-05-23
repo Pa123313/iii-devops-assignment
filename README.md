@@ -13,14 +13,14 @@
 ## 📸 Demo
 
 ### Terraform Deployment
-![Terraform Output]<img width="812" height="427" alt="Capture 2" src="https://github.com/user-attachments/assets/b8733c48-3ddf-4cf4-9f6a-19471ded753b" />
+![Terraform Apply](screenshots/terraform-apply.PNG)
 
 
 
 ### API Working End-to-End
-![Curl Response]<img width="1346" height="263" alt="Capture 3" src="https://github.com/user-attachments/assets/7a03907c-c3ef-4a9a-8dd5-cf001554f874" />
-<img width="1352" height="425" alt="Capture 4" src="https://github.com/user-attachments/assets/b5d7ba37-beae-4c69-91ce-c2083d0a962e" />
+![API Response](screenshots/api-success-response.PNG)
 
+![RPC Communication](screenshots/rpc-worker-communication.PNG)
 
 
 
