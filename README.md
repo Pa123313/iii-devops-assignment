@@ -108,9 +108,41 @@ cd workers/caller-worker
 npm install
 III_URL=ws://172.31.3.50:49134 npx tsx worker.ts
 ```
+### 5. Systemd Service (Auto-restart on reboot)
 
+Create `/etc/systemd/system/inference-worker.service` on inference VM:
+
+```ini
+[Unit]
+Description=iii Inference Worker
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/hiring/may-2026/devops/quickstart/workers/inference-worker
+Environment=III_URL=ws://172.31.3.50:49134
+ExecStart=/home/ubuntu/hiring/may-2026/devops/quickstart/workers/inference-worker/venv/bin/python3 inference_worker.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable it:
+```bash
+sudo systemctl enable inference-worker
+sudo systemctl start inference-worker
+```
+
+
+## 🔐 Network Hygiene
+
+- Only API Gateway VM (44.211.181.212) has a public IP
+- Engine, inference-worker, caller-worker are in private subnet
+- Workers communicate only via private IPs over port 49134
+- No worker is directly reachable from the public internet
 ---
-
+```
 ## 📡 API Reference
 
 **Endpoint:** `POST /v1/chat/completions`
