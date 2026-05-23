@@ -134,7 +134,7 @@ curl -s -X POST http://172.31.3.50:3111/v1/chat/completions \
   }
 }
 
----
+````
 
 ## 🔄 RPC Flow
 curl POST /v1/chat/completions
