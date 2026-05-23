@@ -13,12 +13,18 @@
 ## 📸 Demo
 
 ### Terraform Deployment
-![Terraform Output]<img width="812" height="427" alt="terraform" src="https://github.com/user-attachments/assets/4478fc3d-ce4d-43f6-889a-c43d67ad5277" />
+![Terraform Output]<img width="812" height="427" alt="Capture 2" src="https://github.com/user-attachments/assets/b8733c48-3ddf-4cf4-9f6a-19471ded753b" />
+
 
 
 ### API Working End-to-End
-![Curl Response]<img width="1346" height="263" alt="curl output - 1" src="https://github.com/user-attachments/assets/edeb1cc7-23b9-42ef-93b7-837240e02466" />
-<img width="1352" height="425" alt="curl output - 2" src="https://github.com/user-attachments/assets/f2997ccc-9484-4b38-82b5-66391377392b" />
+![Curl Response]<img width="1346" height="263" alt="Capture 3" src="https://github.com/user-attachments/assets/7a03907c-c3ef-4a9a-8dd5-cf001554f874" />
+<img width="1352" height="425" alt="Capture 4" src="https://github.com/user-attachments/assets/b5d7ba37-beae-4c69-91ce-c2083d0a962e" />
+
+
+
+
+
 
 
 ---
@@ -109,16 +115,17 @@ III_URL=ws://172.31.3.50:49134 npx tsx worker.ts
 
 **Endpoint:** `POST /v1/chat/completions`
 
-**Request:**
-```json
-{
-  "messages": [
-    {"role": "user", "content": "What is 2 + 2?"}
-  ]
-}
+## Curl Command
+
+```bash
+curl -s -X POST http://172.31.3.50:3111/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  --max-time 300 \
+  -d '{"messages": [{"role": "user", "content": "Hi"}]}' | jq
 ```
 
-**Response:**
+## Sample Response
+
 ```json
 {
   "result": {
@@ -126,14 +133,6 @@ III_URL=ws://172.31.3.50:49134 npx tsx worker.ts
     "success": "You've connected two workers and they're interoperating seamlessly"
   }
 }
-```
-
-**Curl:**
-```bash
-curl -X POST http://172.31.3.50:3111/v1/chat/completions \
-  -H 'Content-Type: application/json' \
-  -d '{"messages": [{"role": "user", "content": "What is 2+2?"}]}'
-```
 
 ---
 
